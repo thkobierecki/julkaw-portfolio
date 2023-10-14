@@ -1,95 +1,69 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import Hero from "@/components/HeroSection";
+import Kontakt from "@/components/Kontakt";
+import Programy from "@/components/Programy";
+import Projekty from "@/components/Projekty";
+import Image from "next/image";
+import styled from "styled-components";
+import wave from "../../public/footerPurple.svg";
+import theme from "@/styles/theme";
+
+const TemplateContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
+`;
+const ContentWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Wrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+`;
+
+const Copy = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.xs}px;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  font-weight: ${({ theme }) => theme.fontWeight[2]};
+  position: absolute;
+  bottom: 130px;
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    bottom: 60px;
+  }
+`;
+
+const Footer = () => {
+  return (
+    <Wrapper>
+      <Copy>Julia Kawczyńska 2023</Copy>
+      <Image
+        src={wave}
+        alt="wave"
+        width={600}
+        height={500}
+        layout="responsive"
+      />
+    </Wrapper>
+  );
+};
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <TemplateContainer>
+      <ContentWrapper>
+        <Hero />
+        <Programy />
+        <Projekty />
+        <Kontakt color={theme.colors.purpleSecondary} />
+        <Footer />
+      </ContentWrapper>
+    </TemplateContainer>
+  );
 }
